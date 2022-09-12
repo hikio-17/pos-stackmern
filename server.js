@@ -27,9 +27,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // routes
-app.get("/", (req, res) => {
-  res.send("<h1>POS BACKEND</h1>");
-});
+
 app.use("/api/items", itemRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/bills", billsRoutes);
