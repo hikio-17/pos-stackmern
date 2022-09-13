@@ -37,9 +37,7 @@ const Homepage = () => {
     const getAllItems = async () => {
       try {
         dispatch({ type: "SHOW_LOADING" });
-        const { data } = await axios.get(
-          "http://localhost:5000/api/items/get-item"
-        );
+        const { data } = await axios.get("/api/items/get-item");
         setItemsData(data);
         dispatch({ type: "HIDE_LOADING" });
         console.log(data);

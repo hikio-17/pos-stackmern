@@ -14,9 +14,7 @@ const ItemPage = () => {
   const getAllItems = async () => {
     try {
       dispatch({ type: "SHOW_LOADING" });
-      const { data } = await axios.get(
-        "http://localhost:5000/api/items/get-item"
-      );
+      const { data } = await axios.get("/api/items/get-item");
       setItemsData(data);
       dispatch({ type: "HIDE_LOADING" });
       console.log(data);
@@ -35,7 +33,7 @@ const ItemPage = () => {
   const handleDelete = async (record) => {
     try {
       dispatch({ type: "SHOW_LOADING" });
-      await axios.post("http://localhost:5000/api/items/delete-item", {
+      await axios.post("/api/items/delete-item", {
         itemId: record._id,
       });
       message.success("Item Deleted Successfully");
@@ -88,10 +86,7 @@ const ItemPage = () => {
     if (editItem === null) {
       try {
         dispatch({ type: "SHOW_LOADING" });
-        const res = await axios.post(
-          "http://localhost:5000/api/items/add-item",
-          value
-        );
+        const res = await axios.post("/api/items/add-item", value);
         message.success("Item Added Successfully");
         getAllItems();
         setPopupModal(false);
@@ -104,10 +99,10 @@ const ItemPage = () => {
     } else {
       try {
         dispatch({ type: "SHOW_LOADING" });
-        const res = await axios.put(
-          "http://localhost:5000/api/items/edit-item",
-          { ...value, itemId: editItem._id }
-        );
+        const res = await axios.put("/api/items/edit-item", {
+          ...value,
+          itemId: editItem._id,
+        });
         message.success("Item Updated Successfully");
         getAllItems();
         setPopupModal(false);

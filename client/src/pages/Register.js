@@ -12,7 +12,7 @@ const Register = () => {
   const handleSubmit = async (value) => {
     try {
       dispatch({ type: "SHOW_LOADING" });
-      await axios.post("http://localhost:5000/api/users/register", value);
+      await axios.post("/api/users/register", value);
       message.success("User Register Successfully");
       navigate("/login");
       dispatch({ type: "HIDE_LOADING" });

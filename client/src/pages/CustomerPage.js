@@ -10,9 +10,7 @@ const CustomerPage = () => {
   const getAllBills = async () => {
     try {
       dispatch({ type: "SHOW_LOADING" });
-      const { data } = await axios.get(
-        "http://localhost:5000/api/bills/get-bills"
-      );
+      const { data } = await axios.get("/api/bills/get-bills");
       setBillsData(data);
       dispatch({ type: "HIDE_LOADING" });
       console.log(data);

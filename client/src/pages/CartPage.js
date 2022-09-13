@@ -100,7 +100,7 @@ const CartPage = () => {
         ),
         userId: JSON.parse(localStorage.getItem("auth"))._id,
       };
-      await axios.post("http://localhost:5000/api/bills/add-bills", newObject);
+      await axios.post("/api/bills/add-bills", newObject);
       message.success("Bills Generated!");
       navigate("/bills");
     } catch (error) {
